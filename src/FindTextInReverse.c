@@ -22,35 +22,28 @@
  */
 int findTextInReverse(char *text, char *word){
 	
-	int noOfText, noOfWord, i=0, j;
-
-	for(noOfText = 0; text[noOfText] != 0;noOfText++){
-	}	// to obtain the no of character entered by user
+	int sizeOfText=0, sizeOfFinding=0, i;                               // Initialize counters
+    
+	for(sizeOfText = 0; text[sizeOfText] != 0;sizeOfText++){}           // to obtain the no of character entered by user
 	
-	for(noOfWord = 0; word[noOfWord] != 0;noOfWord++){
-	}	// to obtain the no of character to be find 
-	printf("No of Text = %d, No of Word = %d \n", noOfText, noOfWord);
+	for(sizeOfFinding = 0; word[sizeOfFinding] != 0;sizeOfFinding++){}	// to obtain the no of character to be find 
+	printf("Size: Text = %d, Word = %d \n", sizeOfText, sizeOfFinding);
 
-	while(noOfText > -1 && text[noOfText-1] != 0){
-		printf("Text = %d, Word = %d \n", text[noOfText-1], word[i]);
-		
-		if(text[noOfText-1] == word[i]){	//check 1st letter of word to find in the text from right to left
-			j=1;
-			
-			while(word[i+j] == 0 || text[noOfText+j-1] == word[i+j]){
-				printf("Next Text = %d, Next Word = %d \n", text[noOfText+j-1], word[i+j]);
-				
-				if(word[i+j] == 0){
-					printf("Position = %d \n\n", (noOfText-1));
-					return (noOfText-1);
+	while(sizeOfText > -1){                                             // Loop through index 0 of Text and avoid null text		
+		if(text[sizeOfText-1] == word[0]){	                            // First character in Finding Word Match
+			i=1;
+			while(word[i] == 0 || text[sizeOfText+i-1] == word[i]){		// Loop through the Finding Word with Text
+				if(word[i] == 0){                                       // Reached the last character of Finding Word
+					printf("Position = %d \n\n", (sizeOfText-1));
+					return (sizeOfText-1);
 				}
-				j++;
+				i++;
 			}		
 		}
-		noOfText--;
+		sizeOfText--;
 	}
 	
-	printf("*No of Text = %d, No of Word = %d", noOfText, noOfWord);
+	printf("*No of Text = %d, No of Word = %d", sizeOfText, sizeOfFinding);
 	return -1;
 }
 
